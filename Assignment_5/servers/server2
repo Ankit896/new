@@ -1,0 +1,1 @@
+ssh -i ~/.ssh/id_rsa -p 2022 user@server2

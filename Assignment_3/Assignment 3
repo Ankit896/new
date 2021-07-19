@@ -1,0 +1,21 @@
+Create a utility to cleanup the logs, please note:
+- You should not be using logrotate.
+- Log cleanup information should be stored in a configuration file
+  - nginx_logCleaner.conf for nginx process
+  - apache_logCleaner.conf for apache process
+  - hello_logCleaner.conf for helloWorld.sh (custom process)
+- Below are the cleanup configuration options
+  - process name for which to clean up
+  - path of the process log file (optional) - default should be /var/log/<process>
+  - Size basis i.e 40 kb
+  - Time basis i.e 0800
+  - Will it be deleted or backed up
+  - If backed up, how many backup needs to be retained
+- The utility should run as a background daemon
+- The utility must generate a log file of it's own and periodically print information
+  - each time it wakes to collect
+  - number of processes it is managing
+  - which file it rotated
+- Use the linux directory structure convention to place all the files, ie. executable script, configuration files, backup files per process, log file of this utility.
+example :
+./OtRunInBackground start OtLogCleaner --config /path/to/OtLogCleaner.d/

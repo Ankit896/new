@@ -1,0 +1,47 @@
+- Create a utility otssh, this utility will have below features
+    - add ssh connect
+    - list ssh connection
+    - update ssh connection
+    - delete ssh connection
+    - Connect
+- Add ssh connection
+$ otssh -a -n mysql-server -h mysql.opstree.com -u mukul
+$ otssh -a -n server2 -h server2 -u user -p 2022
+$ otssh -a -n server1 -h server3 -u user3 -p 2022 -i ~/.ssh/server3.pem
+- List ssh connection
+i.e 
+$ otssh ls
+mysql-server
+server2
+server3
+$ otssh ls -d
+mysql-server: ssh mukul@mysql.opstree.com
+server2: ssh -p 2022 user@server2
+server3: ssh -i ~/.ssh/server3.pem -p 2022 user3@server3
+- Modify ssh connection
+$ otssh -m -n mysql-server -h mysql.otmiddleware.com -u sajal
+$ otssh -m -n server2 -h server2 -u user2 -p 2022
+$ otssh ls -d
+mysql-server: ssh sajal@mysql.otmiddleware.com
+server2: ssh -p 2022 user2@server2
+server3: ssh -i ~/.ssh/server3.pem -p 2022 user3@server3
+- Delete ssh connection
+$ otssh rm mysql-server
+$ otssh rm server2
+$ otssh ls -d
+server3: ssh -i ~/.ssh/server3.pem -p 2022 user3@server3
+- Connect to server
+$ otssh mysql-server
+[ERROR]: Server information is not available, please add sever first
+$ otssh server2
+[ERROR]: Server information is not available, please add sever first
+$ otssh server3
+Connecting to server3 on 2022 port as user3 via ~/.ssh/server3.pem key
+-a = add
+-n = name
+-h = host
+-u = user name
+-p = port
+-m = modify
+-d = describe
+rm = remove
